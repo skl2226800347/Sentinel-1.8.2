@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.csp.sentinel.dashboard.biz.mapper.ParamFlowRuleMapperExt" >
+
+    <sql id="where_selectParamFlowRuleWithPaging">
+
+    </sql>
+    <select id="selectParamFlowRuleWithPaging" parameterType="com.alibaba.csp.sentinel.dashboard.biz.domain.query.ParamFlowRulePaginationQuery" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from   `param_flow_rule`
+        <include refid="where_selectParamFlowRuleWithPaging" />
+        <if test="groupByClause != null and groupByClause !=''">
+            group by ${groupByClause}
+        </if>
+        <if test="orderByClause != null and orderByClause !=''">
+            order by ${orderByClause}
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+    <select id="countParamFlowRuleWithPaging" parameterType="com.alibaba.csp.sentinel.dashboard.biz.domain.query.ParamFlowRulePaginationQuery" resultType="java.lang.Integer">
+        select count(id) from
+        (
+            select id
+            from `param_flow_rule`
+            <include refid="where_selectParamFlowRuleWithPaging"/>
+            <if test="groupByClause != null and groupByClause !=''">
+                group by ${groupByClause}
+            </if>
+          )a
+    </select>
+</mapper>

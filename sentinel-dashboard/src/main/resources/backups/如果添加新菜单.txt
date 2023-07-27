@@ -1,0 +1,8 @@
+1、webapp/resources/app/scripts/directives/sidebar/sidebar.html  添加li标签对应内容
+2、webapp/resources/app/scripts/app.js文件中，添加.state  如dashboard.degradeV2
+3、webapp/resources/app/scripts/controllers目录下添加相应js文件。如delgrade_v2.js
+4、webapp/resources/app/views/目录下，添加html文件。如degrade_v2.html
+5、webapp/resources/app/scripts/services目录下添加js文件。如degrade_service_v2.js
+6、webapp/resources/gulpfile.js添加引用，如：'app/scripts/services/degrade_service_v2.js'
+
+重新打包即可

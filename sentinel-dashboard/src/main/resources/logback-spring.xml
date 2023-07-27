@@ -1,0 +1,29 @@
+<configuration>
+    <property name="LOG_FILE_PATH" value="/opt/logs/sentineldashboard" />
+    <appender name="sentinel-dashboard" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE_PATH}/sentinel-dashboard.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE_PATH}/sentinel-dashboard.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder><!-- 必须指定，否则不会往文件输出内容 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{5} [%X{SOFA-TraceId} , %X{SOFA-SpanId}] - %msg%n</pattern>
+        </encoder>
+        <append>false</append>
+        <prudent>false</prudent>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%X{SOFA-TraceId} , %X{SOFA-SpanId}]  - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="sentinel-dashboard"/>
+    </root>
+
+    <logger name="org.jeecg.modules" level="TRACE"/>
+
+</configuration>

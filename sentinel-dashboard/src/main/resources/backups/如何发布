@@ -1,0 +1,20 @@
+一、idea如何启动本地
+1、在Run/Debug Configurations 页面中找到DashboardApplication类
+在Program arguments 输入 :--spring.profiles.active=dev
+2、直接DashboardApplication启动
+
+二、idea如何执行单元测试
+1、在Run/Debug Configurations 页面 在Environmen variables输入
+spring.profiles.active=dev
+2、启动测试类
+三、本地或远程以jar包形式启动
+1、mvn clean install  -Dmaven.test.skip=true（没有maven仓库）
+call mvn clean source:jar  deploy -Denforcer.skip=true -Dmaven.test.skip=true -U
+@pause （有maven仓库）
+
+2、进入sentinel-dashboard目录下打包（打开发环境）
+mvn clean install -U -Ponline-dev -Dmaven.test.skip=true 或
+mvn clean install -U  -Dmaven.test.skip=true
+
+3、启动（启动本地）
+ava -jar sentinel-dashboard.java --spring.profiles.active=dev

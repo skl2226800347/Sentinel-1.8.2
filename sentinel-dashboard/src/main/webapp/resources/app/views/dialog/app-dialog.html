@@ -1,0 +1,25 @@
+<div>
+  <span class="brand" style="font-weight:bold;">{{appDialog.title}}</span>
+  <div class="card" style="margin-top: 20px;margin-bottom: 10px;">
+    <div class="panel-body">
+      <div class="row">
+        <form role="form" class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">应用名</label>
+            <div class="col-sm-9">
+              <input type="text" ng-if="appDialog.type == 'edit'" class="form-control" placeholder="应用名" ng-model='currentRule.app'
+                     disabled="" />
+              <input type="text" ng-if="appDialog.type == 'add'" class="form-control highlight-border" placeholder="应用名" ng-model='currentRule.app'
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="separator"></div>
+      <div clss="row" style="margin-top: 20px;">
+        <button class="btn btn-outline-danger" style="float:right; height: 30px;font-size: 12px;margin-left: 10px;" ng-click="closeThisDialog()">取消</button>
+        <button class="btn btn-outline-success" style="float:right; height: 30px;font-size: 12px;" ng-click="saveApp()">{{appDialog.confirmBtnText}}</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.csp.sentinel.dashboard.biz.mapper.AuthorityRuleMapperExt" >
+
+    <sql id="where_selectAuthorityRuleWithPaging">
+
+    </sql>
+    <select id="selectAuthorityRuleWithPaging" parameterType="com.alibaba.csp.sentinel.dashboard.biz.domain.query.AuthorityRulePaginationQuery" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from   `authority_rule`
+        <include refid="where_selectAuthorityRuleWithPaging" />
+        <if test="groupByClause != null and groupByClause !=''">
+            group by ${groupByClause}
+        </if>
+        <if test="orderByClause != null and orderByClause !=''">
+            order by ${orderByClause}
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+    <select id="countAuthorityRuleWithPaging" parameterType="com.alibaba.csp.sentinel.dashboard.biz.domain.query.AuthorityRulePaginationQuery" resultType="java.lang.Integer">
+        select count(id) from (
+            select id
+            from `authority_rule`
+            <include refid="where_selectAuthorityRuleWithPaging"/>
+            <if test="groupByClause != null and groupByClause !=''">
+                group by ${groupByClause}
+            </if>
+        )a
+    </select>
+</mapper>

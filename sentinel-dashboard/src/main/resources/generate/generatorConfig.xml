@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 
+D:\idea_workplace\study\Sentinel-1.8.2\sentinel-dashboard
+	Mybatis生成Mapper配置文件
+	1，cmd切换至项目根目录
+	2，执行：mvn mybatis-generator:generate -Dmybatis.generator.configurationFile=src/main/resources/generate/generatorConfig.xml
+ -->
+<generatorConfiguration>
+	<classPathEntry
+		location="D:/repository/mysql/mysql-connector-java/5.1.13/mysql-connector-java-5.1.13.jar" />
+
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		<!-- <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" /> -->
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/test" userId="xxxx"
+			password="uat">
+		</jdbcConnection>
+
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="com.alibaba.csp.sentinel.dashboard.biz.entity"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+							 targetPackage="com.alibaba.csp.sentinel.dashboard.biz.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!--<table tableName="flow_rule" domainObjectName="FlowRule" delimitIdentifiers="true">
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/>
+		</table>
+		<table tableName="authority_rule" domainObjectName="AuthorityRule" delimitIdentifiers="true">
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/>
+		</table>
+		<table tableName="degrade_rule" domainObjectName="DegradeRule" delimitIdentifiers="true">
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/>
+		</table>
+
+		<table tableName="param_flow_rule" domainObjectName="ParamFlowRule" delimitIdentifiers="true">
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/>
+		</table>
+		<table tableName="system_rule" domainObjectName="SystemRule" delimitIdentifiers="true">
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/>
+		</table>-->
+
+		<!--<table tableName="app" domainObjectName="App" delimitIdentifiers="true">
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/>
+		</table>-->
+		<table tableName="user" domainObjectName="User" delimitIdentifiers="true">
+			<generatedKey column="id" sqlStatement="MYSQL" identity="true" type="post"/>
+		</table>
+
+
+	</context>
+
+		
+
+</generatorConfiguration>
